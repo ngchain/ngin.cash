@@ -1,4 +1,6 @@
-# Index for ngin
+# Index for NGIN
+
+Domain https://ngin.sh
 
 ## Ready
 
@@ -7,7 +9,7 @@ Get `hugo` from [gohugo.io](https://gohugo.io/)
 ## Build
 
 ```bash
-hugo
+hugo -d docs
 ```
 
 ## Serve
@@ -15,7 +17,7 @@ hugo
 On serve mode, editing the pages with WYSIWYG.
 
 ```bash
-hugo serve
+hugo serve -d docs
 ```
 
 ## Public

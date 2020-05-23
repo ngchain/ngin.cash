@@ -1,0 +1,26 @@
+#particles canvas{
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.logo {
+    background-position: 0 0;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(/img/NG.svg);
+}
+
+.tabs .indicator {
+    background-color: black
+}
+
+/* Cannot change markdown so change here */
+img {
+    max-width: 100%;
+    height:auto;
+}

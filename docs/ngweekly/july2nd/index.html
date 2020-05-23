@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+  <head lang="en-us">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <title>What is the Vault - NGIN: Decentralized Application Engine</title>
+
+        
+        <link rel="canonical" href="https://ngin.sh/ngweekly/july2nd/">
+        
+
+        <meta property="og:url" content="https://ngin.sh/ngweekly/july2nd/">
+        <meta property="og:title" content="NGIN: Decentralized Application Engine">
+        
+        <meta name="apple-mobile-web-app-title" content="NGIN: Decentralized Application Engine">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <link rel="shortcut icon" type="image/x-icon" href="https://ngin.sh/images/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="https://ngin.sh/images/favicon.ico">
+
+        <link rel="stylesheet" media="screen" href="/css/materialize.css">
+        <link rel="stylesheet" media="screen" href="/css/style.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
+    
+    </head>
+    <body>
+
+
+<nav
+    style="background-color: rgb(0,0,0,0);     box-shadow: 0 0 0 0 rgb(0,0,0,0); -webkit-box-shadow: 0 0 0 0 rgb(0,0,0,0);">
+    <a href="#" class="sidenav-trigger right" data-target="slide-out" style="color: #727272;"><i
+            class="material-icons">menu</i></a>
+</nav>
+
+<ul id="slide-out" class="sidenav">
+
+    <li><a class="subheader">Team Info</a></li>
+    <li><a href="#!">Our Team</a></li>
+    <li><a href="#!">The origin NGIN</a></li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Useful External Links</a></li>
+    <li><a class="waves-effect" href="#!">The official explorer</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="card card-large">
+
+            <div class="card-content">
+                <span class="card-title">
+                    <div class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <b>NGIN</b>
+                    &lt;ˈenjən>
+                </span>
+                <div class="container">
+                    <span class="flow-text">
+                        
+                        <h1>What is the Vault</h1>
+                        
+
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-content grey lighten-4">
+                <div class="container" style="font-size: 1.5rem">
+                    <a href="/">Home</a> >
+                    <a href="/ngweekly/">ngweekly</a> >
+                    <a href="/ngweekly/july2nd/">July2nd</a>
+                </div>
+            </div>
+            <div class="card-content grey lighten-3">
+
+
+                <div class="container">
+
+                    <br>
+                    <p>Hello everyone, this is NGIN Weekly.</p>
+<p><img src="/ngweekly/engine_pic.jpg" alt="NGIN" title="Engine"></p>
+<h4 id="balancesheet-is-not-balance-sheet">balanceSheet is not balance sheet</h4>
+<p>Last week, we briefly introduced the vault architecture we introduced in ngWeekly. Just like the literal meaning, it is the existence of a safe to ensure the security of funds in the main chain.</p>
+<p>Today we will explain the important thing locked in the vault - <strong>balanceSheet</strong>.</p>
+<p>The balanceSheet is a k-v pool that runs and automatically updates the account instances among nodes as the transaction pool storing the txs.</p>
+<p>And, the vault packs it when block reaches checkpoint.
+This balanceSheet has similarities and differences in the balance sheet in the accounting profession.</p>
+<p><img src="/ngweekly/balance_sheet.png" alt="&ldquo;balance sheet&rdquo;" title="balance sheet"></p>
+<h4 id="vault-doesnt-have-any-txs--keep-chain-light">Vault doesn&rsquo;t have any txs =&gt; keep chain light</h4>
+<p>First, the transaction content is not recorded in the balanceSheet in ngin, different from the accounting balance sheet. Assuming that the transaction is recorded, the ngin node will be occupied by a bunch of historical transaction content just like bitcoin.</p>
+<p>So we keep the transactions in the block, which we defined can be deleted, and in order to correspond to the transaction, we hook each vault to a checkpoint block, which means that the balanceSheet corresponds to the time point corresponding to the block.</p>
+<p>After the balanceSheet transaction information is placed in the block transaction, we only need to save the balance information of each account, like the accounting balance sheet does.</p>
+<p>But considering the scalability of the entire system, we not only need to save the content of the balance, we also introduced the subState field to store the data.  This part is stored as permanent.</p>
+<p>This part of the permanent storage can be used as a smart contract, can construct layer-2, and can save your private data, or you can express some declarations in plain text.</p>
+<p>You only need to ensure that your account is not recycled by the network, and this space will always be yours.</p>
+<h4 id="hashvault--hashbalancesheet--keep-chain-safe">hash(Vault) == hash(balanceSheet) =&gt; keep chain safe</h4>
+<p><img src="/ngweekly/vaults.jpg" alt="&ldquo;vaults&rdquo;" title="vaults"></p>
+<p>Since there is a field <strong>prevVaultHash</strong> in the block structure, that corresponds to the hash of the previous vault, the hash is obtained by sorting all the accounts of the balanceSheet, serializing and then calculating the hash value.</p>
+<p>Therefore, all nodes can guarantee the consistency of the vault and the data in it through the transmission of the block, without additional data transmission. As we said last week, the same new node only needs two vaults and their corresponding 12 blocks after accessing the network.</p>
+<p>And since it is easy to accumulate the total circulation at the current block height, in the process of hashing the balanceSheet (equivalent to the vault hash), it is a review of the transactions in the previous 6 blocks, and all previous transactions can be successfully guaranteed.</p>
+<p>In other words, a vault generation is a sufficient condition for a mature transaction.  It is tentative that the block time is 10s, and 6 blocks form a vault, which means that the transaction only takes 1 minute to confirm.</p>
+<h4 id="next">Next</h4>
+<p>So it&rsquo;s obvious that the ngin node storage space usage is very sensitive to the number of accounts, and next week we will explain some of the account&rsquo;s design.</p>
+<p>Then I will talk about some sensitive double-spending and other issues.</p>
+
+                </div>
+
+            </div>
+            <div class="card-content grey lighten-3">
+                <div class="container">
+                     NEXT:<a href="https://ngin.sh/ngweekly/july3rd/">Account is temporary and permanent</a>
+                </div>
+
+            </div>
+
+        </div>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="card card-large">
+
+            <div class="card-content">
+                <div class="container">
+
+                
+                <div id="disqus_thread"></div>
+                <script>
+                    
+
+
+                    var disqus_config = function () {
+                        this.page.url = "https://ngin.sh/ngweekly/july2nd/"; 
+                        this.page.identifier = "a9c72b83d87934cd80b187ed4f5fa07f"; 
+                    };
+
+                    (function () { 
+                        var d = document,
+                            s = d.createElement('script');
+                        s.src = 'https://ngincash.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                        powered by Disqus.</a></noscript>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="center">
+    <a class="github-button" href="https://github.com/ngchain" data-size="large"
+    data-show-count="true" aria-label="Follow @ngchain on GitHub">Follow @ngchain</a>
+</div>

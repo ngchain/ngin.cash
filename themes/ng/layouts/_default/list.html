@@ -1,0 +1,68 @@
+{{ partial "head" . }}
+
+<nav
+    style="background-color: rgb(0,0,0,0);     box-shadow: 0 0 0 0 rgb(0,0,0,0); -webkit-box-shadow: 0 0 0 0 rgb(0,0,0,0);">
+    <a href="#" class="sidenav-trigger right" data-target="slide-out" style="color: #727272;"><i
+            class="material-icons">menu</i></a>
+</nav>
+
+{{ partial "sidebar" . }}
+
+<div class="container">
+    <div class="row">
+        <div class="card card-large">
+
+            <div class="card-content">
+                <span class="card-title">
+                    <div class="logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <b>{{ i18n "name" . }}</b>
+                    <ˈenjən>
+                </span>
+                <div class="container">
+                    <p class="flow-text">
+                        <span></span>
+                        <h1>{{ upper .Section }}</h1>
+                        {{ .Content }}
+                        
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-content grey lighten-4">
+                <div class="container" style="font-size: 1.5rem">
+                    <a href="{{ .Site.Home.Permalink }}">Home</a> >
+                    <a href="{{ .Permalink }}">{{ .Section }}</a>
+                </div>
+            </div>
+
+  
+        </div>
+        </p>
+    </div>
+</div>
+
+{{ range .Pages }}
+<div class="container">
+    <div class="row">
+        <!-- <div class="col offset-m3 m6"> -->
+        <div class="card card-large">
+            <div class="card-content">
+                <span class="card-title flow-text"> {{ .Title }} <small class="right"> {{ .PublishDate.Format "January 2, 2006" }}</small></span>
+                <a class="btn halfway-fab waves-effect waves-light right grey" href={{ .Permalink }}>Read More</a>
+            </div>
+            <div class="card-content grey lighten-3">
+                <div class="container">
+                    <p>{{ .Summary }}</p>
+                </div>                    
+            </div>
+
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+
+{{ partial "footer" . }}

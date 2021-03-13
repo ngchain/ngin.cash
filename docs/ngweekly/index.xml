@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NGIN Weekly on NGIN: Decentralized Application Engine</title>
-    <link>https://ngin.sh/ngweekly/</link>
+    <link>https://ngin.cash/ngweekly/</link>
     <description>Recent content in NGIN Weekly on NGIN: Decentralized Application Engine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://ngin.sh/ngweekly/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ngin.cash/ngweekly/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Account is temporary and permanent</title>
-      <link>https://ngin.sh/ngweekly/july3rd/</link>
+      <link>https://ngin.cash/ngweekly/july3rd/</link>
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ngin.sh/ngweekly/july3rd/</guid>
+      <guid>https://ngin.cash/ngweekly/july3rd/</guid>
       <description>Welcome to this week&amp;rsquo;s ngWeekly.
 Do you like our new logo?
 As mentioned above, we need to talk about the model of the account in the ngin network this week.
@@ -25,10 +21,10 @@ Account&amp;rsquo;s content As we said in the last few weeks, we will need to st
     
     <item>
       <title>What is the Vault</title>
-      <link>https://ngin.sh/ngweekly/july2nd/</link>
+      <link>https://ngin.cash/ngweekly/july2nd/</link>
       <pubDate>Sat, 13 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ngin.sh/ngweekly/july2nd/</guid>
+      <guid>https://ngin.cash/ngweekly/july2nd/</guid>
       <description>Hello everyone, this is NGIN Weekly.
 balanceSheet is not balance sheet Last week, we briefly introduced the vault architecture we introduced in ngWeekly. Just like the literal meaning, it is the existence of a safe to ensure the security of funds in the main chain.
 Today we will explain the important thing locked in the vault - balanceSheet.
@@ -37,10 +33,10 @@ The balanceSheet is a k-v pool that runs and automatically updates the account i
     
     <item>
       <title>What are we building?</title>
-      <link>https://ngin.sh/ngweekly/july1st/</link>
+      <link>https://ngin.cash/ngweekly/july1st/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ngin.sh/ngweekly/july1st/</guid>
+      <guid>https://ngin.cash/ngweekly/july1st/</guid>
       <description>This is the beginning of ngWeekly I believe that before you read this NGIN Weekly, you have already got a general understanding of what the project wants to do through our official website and the original whitepaper on github.
 This week we will make a brief review of the original project and then start to talk about how we are going to design our new backend daemon.
 Review how Arseniy led NGIN to &amp;ldquo;errors&amp;rdquo; Let&amp;rsquo;s review how Arseniy#8378 led Ngin to &amp;ldquo;errors&amp;rdquo;.</description>

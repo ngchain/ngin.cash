@@ -1,6 +1,6 @@
 # Index for NGIN
 
-Domain https://ngin.sh
+Domain https://ngin.cash
 
 ## Ready
 

@@ -3,11 +3,11 @@
 
 name = "NG"
 license = "MIT"
-description = ""
+description = "https://ngin.cash/"
 homepage = ""
 tags = []
 features = []
 
 [author]
-  name = "Command"
-  homepage = ""
+  name = "Command M"
+  homepage = "https://c0mm4nd.com"
